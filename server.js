@@ -26,7 +26,7 @@ app.put("/profile/me", profileController.updateProfile);
 app.post("/api/idByEmail", apiController.IdByEmail)
 app.post("/api/profileById", apiController.profileById)
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Servidor en ejecución en el puerto ${PORT}`);
   });
