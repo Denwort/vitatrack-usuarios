@@ -110,6 +110,11 @@ const CognitoService = {
     return;
   },
 
+  async logoutUser(accessToken){
+    // Unicamente el front borra el token
+    // Si se gusta, en el futuro, permitir cierre se sesion global
+  },
+
 };
 
 module.exports = CognitoService;
