@@ -3,35 +3,20 @@ const UserService = require("../services/supabaseService");
 const uploadImage = require('../services/s3Service');
 
 exports.getProfile = async (req, res) => {
-    const IdToken = req.headers['authorization']?.split(' ')[1];
-    if (!IdToken) {
-        return res.status(400).json({ error: "Token es requerido" });
-    }
-  
     try {
-        const cognitoData = await VerifierService.validate(IdToken);
-        const userId = cognitoData.sub;
+        const { userId } = req.body;
         const profile = await UserService.getUserProfile(userId);
         
-        res.status(200).json({ profile });
+        res.status(200).json( profile );
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
   };
   
 exports.updateProfile = async (req, res) => {
-    const IdToken = req.headers['authorization']?.split(' ')[1];
-    if (!IdToken) { 
-        return res.status(400).json({ error: "Token es requerido" });
-    }
 
-    console.log(req)
-    
     try {
-        const { nombre } = req.body;
-
-        const cognitoData = await VerifierService.validate(IdToken);
-        const userId = cognitoData.sub;
+        const { userId, nombre } = req.body;
         
         req.userId = userId;
 

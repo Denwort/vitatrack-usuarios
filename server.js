@@ -24,7 +24,7 @@ app.post("/auth/forgot", authController.forgotPassword);
 app.post("/auth/reset", authController.resetPassword);
 app.post("/auth/logout", logoutController.logout);
 
-app.get("/profile/me", profileController.getProfile);
+app.post("/profile/me", profileController.getProfile);
 app.put("/profile/me", profileController.updateProfile);
 
 app.post("/api/idByEmail", apiController.IdByEmail)
